@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{f13b0600-a64d-4ba0-8517-2daa138adb47}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	//stThisIsOurFirstInstance : ST_Event;
+	bBoolean : BOOL := FALSE;
+	
+	// Event 1 
+	eEventType1 : E_EventType := E_EventType.Alarm;
+	eEventSeverity1 : TcEventSeverity := TcEventSeverity.Error;
+	nEveventIndentity1: UDINT := 42;
+	sEventText1 : STRING(255) := 'This is scary Event 1';
+	
+		// Event 2 
+	eEventType2 : E_EventType := E_EventType.Alarm;
+	eEventSeverity2 : TcEventSeverity := TcEventSeverity.Error;
+	nEveventIndentity2: UDINT := 43;
+	sEventText2 : STRING(255) := 'This is scary Event 2';
+	
+		// Event 3 
+	eEventType3 : E_EventType := E_EventType.Alarm;
+	eEventSeverity3 : TcEventSeverity := TcEventSeverity.Error;
+	nEveventIndentity3: UDINT := 44;
+	sEventText3 : STRING(255) := 'This is scary Eventb 3';
+	
+	BufferArray : ARRAY [0..(nMAXIMUM_NUMBER_OF_EVENTS *(SIZEOF(ST_Event) +nMEMORY_RING_BUFFER_INTERNAL_EXTRA_SPACING))] OF BYTE;
+	fbEventBuffer : FB_EventBuffer(ADR(BufferArray),SIZEOF(BufferArray));
+	CsvPersistanceEventStorage : FB_CsvPersistenceEventStorange(fbEventBuffer);
+	EventLogger : EventLogger(CsvPersistanceEventStorage);
+END_VAR
+VAR CONSTANT
+	nMAXIMUM_NUMBER_OF_EVENTS : UDINT := 10;
+	nMEMORY_RING_BUFFER_INTERNAL_EXTRA_SPACING : INT :=8;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+IF bBoolean THEN
+	EventLogger.AddEvent(eEventType1, eEventSeverity1, nEveventIndentity1, sEventText1);
+	EventLogger.AddEvent(eEventType2, eEventSeverity2, nEveventIndentity2, sEventText2);
+	EventLogger.AddEvent(eEventType3, eEventSeverity3, nEveventIndentity3, sEventText3);
+
+	bBoolean := FALSE;
+END_IF
+
+CsvPersistanceEventStorage ();]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
