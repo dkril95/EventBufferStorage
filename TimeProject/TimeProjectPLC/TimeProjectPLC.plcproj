@@ -16,6 +16,7 @@
     <Implicit_KindOfTask>{2c64fd52-6b91-43dc-a0c4-afe899dbfeea}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{7f33b242-9b1c-4f1c-8147-08dae8773e39}</Implicit_Jitter_Distribution>
     <LibraryReferences>{d776bc45-7375-4a2a-9840-47a72a7046e7}</LibraryReferences>
+    <Released>false</Released>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="PlcTask.TcTTO">
@@ -50,6 +51,10 @@
     <PlaceholderReference Include="Tc3_Module">
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="TcUnit">
+      <DefaultResolution>TcUnit, * (www.tcunit.org)</DefaultResolution>
+      <Namespace>TcUnit</Namespace>
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
