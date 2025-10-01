@@ -6,10 +6,10 @@ The project demonstrates modern PLC programming practices including modular desi
 
 ---
 
-## 🚀 Main Features
+##  Main Features
 
-- 🧠 Modular architecture using **Function Blocks** and **Interfaces**  
-- 🧪 **Test-Driven Development (TDD)** with TcUnit  
-- 💾 **Persistent event storage** using a CSV file  
-- 📚 **Custom TwinCAT 3 Library** containing reusable components  
-- 🌐 Clean code structure following IEC 61131-3 and OOP principles.
+-  Modular architecture using **Function Blocks** and **Interfaces**  
+-  **Test-Driven Development (TDD)** with TcUnit  
+-  **Persistent event storage** using a CSV file  
+-  **Custom TwinCAT 3 Library** containing reusable components  
+-  Clean code structure following IEC 61131-3 and OOP principles.
